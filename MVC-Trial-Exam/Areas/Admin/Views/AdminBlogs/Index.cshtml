@@ -1,0 +1,64 @@
+﻿@section Scripts {
+    <!-- Page level plugins -->
+    <script src="~/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/admin/js/demo/datatables-demo.js"></script>
+}
+
+@{
+    ViewData["Title"] = "Blogs Table CRUD";
+}
+
+@model IEnumerable<AdminBlogListVM>
+
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Blogs Table</h6>
+                        </div>
+                        <div class="card-body">
+                            <a class="btn btn-outline-success" asp-action="Create">Create</a>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Title</th>
+                                            <th>Author</th>
+                                            <th>Image</th>
+                                            <th colspan="2" style="text-align:center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var row in Model)
+                                    {
+                                        <tr>
+                                            <td>@row.Id</td>
+                                            <td>@row.Title</td>
+                                            <td>@row.Author</td>
+                                            <td><img src="@row.ImgUrl" width="100" length="100"></td>
+                                            <td><a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@row.Id">Delete</a></td>
+                                            <td><a class="btn btn-outline-info" asp-action="Update" asp-route-id="@row.Id">Update</a></td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+<!-- End of Main Content -->
